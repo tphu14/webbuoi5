@@ -1,0 +1,33 @@
+﻿@model List<WebApplication12.Models.Book>
+
+<h2>Danh sách Sách</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Thêm Sách Mới</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã Sách</th>
+            <th>Tiêu Đề</th>
+            <th>Tác Giả</th>
+            <th>Giá</th>
+            <th>Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Price.ToString("C")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-sm btn-info">Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
